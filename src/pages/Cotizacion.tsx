@@ -11,8 +11,8 @@ const plans = [
     subtitle: "Ideal para Constructores Independientes",
     price: "S/ 1,200",
     priceNote: "Pago único",
-    maintenance: "S/ 250/año",
-    maintenanceNote: "Hosting básico + Dominio .com",
+    maintenance: "S/ 450/año",
+    maintenanceNote: "Hosting de alto rendimiento + Dominio .com",
     icon: Building2,
     features: [
       "Diseño 100% responsivo (celulares y tablets)",
@@ -35,8 +35,7 @@ const plans = [
       "Todo lo del Plan Profesional",
       "Blog de noticias y avances de obra",
       "Fichas técnicas descargables (PDF)",
-      "Mapa de obras interactivo",
-      "Panel de autogestión de contenidos",
+      
       "Correos corporativos ilimitados",
       "Testimonios y reseñas de clientes",
     ],
@@ -53,7 +52,7 @@ const plans = [
     features: [
       "Todo lo del Plan Corporativo",
       "Buscador de inmuebles con filtros",
-      "Integración con CRM (Bitrix24, Salesforce)",
+      
       "Tour virtual 360°",
       "Chatbot de atención 24/7",
       "Velocidad de carga ultra-rápida",
