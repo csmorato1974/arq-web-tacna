@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -47,6 +48,12 @@ const Navbar = () => {
                 {l.label}
               </a>
             ))}
+            <Link
+              to="/cotizacion"
+              className="text-primary-foreground/80 hover:text-primary transition-colors text-sm font-medium"
+            >
+              Cotización Web
+            </Link>
             <a
               href="https://wa.me/51930382388"
               target="_blank"
@@ -79,6 +86,13 @@ const Navbar = () => {
                 {l.label}
               </a>
             ))}
+            <Link
+              to="/cotizacion"
+              onClick={() => setOpen(false)}
+              className="text-primary-foreground/80 hover:text-primary transition-colors font-medium"
+            >
+              Cotización Web
+            </Link>
             <a
               href="https://wa.me/51930382388"
               target="_blank"
