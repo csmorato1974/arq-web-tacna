@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowLeft, Building2, Briefcase, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useCallback } from "react";
 
 const plans = [
   {
@@ -191,6 +192,51 @@ const questionnaireData = [
 ];
 
 const Cotizacion = () => {
+  // answers: key = "si-qi", value = Set of selected options (multi) or single string
+  const [answers, setAnswers] = useState<Record<string, Set<string>>>({});
+  const [otherTexts, setOtherTexts] = useState<Record<string, string>>({});
+
+  const toggleOption = useCallback((key: string, option: string, multi?: boolean) => {
+    setAnswers((prev) => {
+      const current = prev[key] || new Set<string>();
+      const next = new Set(current);
+      if (multi) {
+        if (next.has(option)) next.delete(option);
+        else next.add(option);
+      } else {
+        next.clear();
+        next.add(option);
+      }
+      return { ...prev, [key]: next };
+    });
+  }, []);
+
+  const buildWhatsAppMessage = useCallback(() => {
+    let msg = "📝 *Cuestionario de Planificación Web*\n\n";
+    questionnaireData.forEach((section, si) => {
+      msg += `*${section.section}*\n`;
+      section.questions.forEach((item, qi) => {
+        const key = `${si}-${qi}`;
+        const selected = answers[key];
+        const otherText = otherTexts[key];
+        msg += `➤ ${item.q}\n`;
+        if (selected && selected.size > 0) {
+          selected.forEach((opt) => {
+            if (opt === "__other__") {
+              msg += `  ✔ Otro: ${otherText || "(sin especificar)"}\n`;
+            } else {
+              msg += `  ✔ ${opt}\n`;
+            }
+          });
+        } else {
+          msg += `  (Sin respuesta)\n`;
+        }
+        msg += "\n";
+      });
+    });
+    return encodeURIComponent(msg);
+  }, [answers, otherTexts]);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -340,40 +386,82 @@ const Cotizacion = () => {
                     {section.section}
                   </h3>
                   <div className="space-y-8">
-                    {section.questions.map((item, qi) => (
-                      <div key={qi}>
-                        <p className="font-medium text-foreground mb-3">
-                          {item.q}
-                        </p>
-                        <div className="space-y-2 pl-2">
-                          {item.options.map((opt) => (
-                            <label
-                              key={opt}
-                              className="flex items-center gap-3 cursor-pointer group"
-                            >
-                              <span
-                                className={`w-4 h-4 rounded${
-                                  item.multi ? "" : "-full"
-                                } border-2 border-muted-foreground/40 group-hover:border-primary transition-colors shrink-0`}
-                              />
-                              <span className="text-sm">{opt}</span>
-                            </label>
-                          ))}
-                          {item.hasOther && (
-                            <label className="flex items-center gap-3 cursor-pointer group">
-                              <span
-                                className={`w-4 h-4 rounded${
-                                  item.multi ? "" : "-full"
-                                } border-2 border-muted-foreground/40 group-hover:border-primary transition-colors shrink-0`}
-                              />
-                              <span className="text-sm">
-                                Otro: _______________
-                              </span>
-                            </label>
-                          )}
+                    {section.questions.map((item, qi) => {
+                      const key = `${si}-${qi}`;
+                      const selected = answers[key] || new Set<string>();
+                      return (
+                        <div key={qi}>
+                          <p className="font-medium text-foreground mb-3">
+                            {item.q}
+                            {item.multi && (
+                              <span className="text-xs text-muted-foreground ml-2">(puedes marcar varias)</span>
+                            )}
+                          </p>
+                          <div className="space-y-2 pl-2">
+                            {item.options.map((opt) => {
+                              const isSelected = selected.has(opt);
+                              return (
+                                <label
+                                  key={opt}
+                                  onClick={() => toggleOption(key, opt, item.multi)}
+                                  className="flex items-center gap-3 cursor-pointer group"
+                                >
+                                  <span
+                                    className={`w-4 h-4 shrink-0 flex items-center justify-center border-2 transition-colors ${
+                                      item.multi ? "rounded" : "rounded-full"
+                                    } ${
+                                      isSelected
+                                        ? "border-primary bg-primary"
+                                        : "border-muted-foreground/40 group-hover:border-primary"
+                                    }`}
+                                  >
+                                    {isSelected && (
+                                      <span className="block w-2 h-2 rounded-full bg-primary-foreground" />
+                                    )}
+                                  </span>
+                                  <span className="text-sm">{opt}</span>
+                                </label>
+                              );
+                            })}
+                            {item.hasOther && (
+                              <div className="flex items-center gap-3">
+                                <label
+                                  onClick={() => toggleOption(key, "__other__", item.multi)}
+                                  className="flex items-center gap-3 cursor-pointer group shrink-0"
+                                >
+                                  <span
+                                    className={`w-4 h-4 shrink-0 flex items-center justify-center border-2 transition-colors ${
+                                      item.multi ? "rounded" : "rounded-full"
+                                    } ${
+                                      selected.has("__other__")
+                                        ? "border-primary bg-primary"
+                                        : "border-muted-foreground/40 group-hover:border-primary"
+                                    }`}
+                                  >
+                                    {selected.has("__other__") && (
+                                      <span className="block w-2 h-2 rounded-full bg-primary-foreground" />
+                                    )}
+                                  </span>
+                                  <span className="text-sm">Otro:</span>
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="Especifica..."
+                                  value={otherTexts[key] || ""}
+                                  onChange={(e) =>
+                                    setOtherTexts((prev) => ({ ...prev, [key]: e.target.value }))
+                                  }
+                                  onFocus={() => {
+                                    if (!selected.has("__other__")) toggleOption(key, "__other__", item.multi);
+                                  }}
+                                  className="flex-1 text-sm px-2 py-1 rounded border border-border bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+                                />
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               ))}
@@ -386,9 +474,7 @@ const Cotizacion = () => {
                   </p>
                   <Button asChild size="lg">
                     <a
-                      href={`https://wa.me/51994897857?text=${encodeURIComponent(
-                        "Hola, completé el cuestionario de planificación web y me gustaría recibir una cotización personalizada."
-                      )}`}
+                      href={`https://wa.me/51994897857?text=${buildWhatsAppMessage()}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
