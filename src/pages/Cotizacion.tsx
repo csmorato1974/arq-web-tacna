@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowLeft, Building2, Briefcase, Crown, Globe, Server, ShieldCheck } from "lucide-react";
+import { CheckCircle, ArrowLeft, Building2, Briefcase, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const plans = [
@@ -61,17 +61,6 @@ const plans = [
   },
 ];
 
-const externalCosts = [
-  { icon: Globe, label: "Dominio .pe", cost: "S/ 110 aprox./año", note: "Registro en Punto PE" },
-  
-  { icon: Server, label: "Hosting Básico", cost: "Desde S/ 180/año", note: "HostGator, SiteGround" },
-  { icon: ShieldCheck, label: "Certificado SSL", cost: "Incluido", note: "En todos los planes" },
-];
-
-const priceRanges = [
-  { type: "Landing Page", range: "S/ 800", desc: "Ideal para campañas específicas" },
-  { type: "Web Informativa/Corporativa", range: "S/ 1,500", desc: "Sitio estándar con 5-7 secciones" },
-];
 
 const factorsExtra = [
   "Sistemas de reservas, chats en vivo o integración con CRMs",
@@ -214,10 +203,10 @@ const Cotizacion = () => {
             <ArrowLeft size={18} />
             <span className="text-sm font-medium">Volver al inicio</span>
           </Link>
-          <h1 className="text-3xl md:text-4xl font-extrabold">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-center">
             <span className="text-primary">Cotización</span> de Página Web
           </h1>
-          <p className="mt-2 text-secondary-foreground/70 max-w-2xl">
+          <p className="mt-2 text-secondary-foreground/70 max-w-2xl mx-auto text-center">
             Precios estimados para el mercado peruano — Sector Construcción e Inmobiliario
           </p>
         </div>
@@ -226,7 +215,7 @@ const Cotizacion = () => {
       {/* Tabs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <Tabs defaultValue="precios" className="w-full">
-          <TabsList className="grid w-full max-w-md grid-cols-2 mb-8">
+          <TabsList className="grid w-full max-w-md grid-cols-2 mb-8 mx-auto">
             <TabsTrigger value="precios">💰 Precios</TabsTrigger>
             <TabsTrigger value="cuestionario">📝 Cuestionario</TabsTrigger>
           </TabsList>
@@ -234,7 +223,7 @@ const Cotizacion = () => {
           {/* ════════ TAB: PRECIOS ════════ */}
           <TabsContent value="precios" className="space-y-12">
             {/* Pricing cards */}
-            <section>
+            <section className="text-center">
               <h2 className="text-2xl font-bold text-foreground mb-6">
                 Planes para Constructoras
               </h2>
@@ -313,47 +302,6 @@ const Cotizacion = () => {
               </div>
             </section>
 
-            {/* General price ranges */}
-            <section>
-              <h2 className="text-2xl font-bold text-foreground mb-4">
-                Rangos de Precios por Tipo de Web
-              </h2>
-              <div className="grid sm:grid-cols-3 gap-4">
-                {priceRanges.map((r) => (
-                  <Card key={r.type}>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-base">{r.type}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-xl font-bold text-primary">{r.range}</p>
-                      <p className="text-sm text-muted-foreground mt-1">{r.desc}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
-
-            {/* External costs */}
-            <section>
-              <h2 className="text-2xl font-bold text-foreground mb-4">
-                Costos Fijos Anuales
-              </h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {externalCosts.map((c) => {
-                  const Icon = c.icon;
-                  return (
-                    <Card key={c.label}>
-                      <CardContent className="pt-6 text-center space-y-2">
-                        <Icon className="mx-auto text-primary" size={28} />
-                        <p className="font-semibold">{c.label}</p>
-                        <p className="text-primary font-bold">{c.cost}</p>
-                        <p className="text-xs text-muted-foreground">{c.note}</p>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-            </section>
 
             {/* Factors */}
             <section>
