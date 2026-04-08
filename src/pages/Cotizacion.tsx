@@ -12,7 +12,7 @@ const plans = [
     price: "S/ 1,200",
     priceNote: "Pago único",
     maintenance: "S/ 450/año",
-    maintenanceNote: "Hosting de alto rendimiento + Dominio .com",
+    maintenanceNote: "Hosting de alto rendimiento",
     icon: Building2,
     features: [
       "Diseño 100% responsivo (celulares y tablets)",
@@ -71,7 +71,6 @@ const externalCosts = [
 const priceRanges = [
   { type: "Landing Page", range: "S/ 800", desc: "Ideal para campañas específicas" },
   { type: "Web Informativa/Corporativa", range: "S/ 1,500", desc: "Sitio estándar con 5-7 secciones" },
-  { type: "Tienda Virtual (E-commerce)", range: "S/ 3,000", desc: "Pasarelas de pago y gestión de inventario" },
 ];
 
 const factorsExtra = [
