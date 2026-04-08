@@ -9,7 +9,7 @@ const plans = [
   {
     name: "Plan Profesional",
     subtitle: "Ideal para Constructores Independientes",
-    price: "S/ 800 – S/ 1,200",
+    price: "S/ 1,200",
     priceNote: "Pago único",
     maintenance: "S/ 250/año",
     maintenanceNote: "Hosting básico + Dominio .com",
