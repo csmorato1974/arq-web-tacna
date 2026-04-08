@@ -203,10 +203,10 @@ const Cotizacion = () => {
             <ArrowLeft size={18} />
             <span className="text-sm font-medium">Volver al inicio</span>
           </Link>
-          <h1 className="text-3xl md:text-4xl font-extrabold">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-center">
             <span className="text-primary">Cotización</span> de Página Web
           </h1>
-          <p className="mt-2 text-secondary-foreground/70 max-w-2xl">
+          <p className="mt-2 text-secondary-foreground/70 max-w-2xl mx-auto text-center">
             Precios estimados para el mercado peruano — Sector Construcción e Inmobiliario
           </p>
         </div>
@@ -215,7 +215,7 @@ const Cotizacion = () => {
       {/* Tabs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <Tabs defaultValue="precios" className="w-full">
-          <TabsList className="grid w-full max-w-md grid-cols-2 mb-8">
+          <TabsList className="grid w-full max-w-md grid-cols-2 mb-8 mx-auto">
             <TabsTrigger value="precios">💰 Precios</TabsTrigger>
             <TabsTrigger value="cuestionario">📝 Cuestionario</TabsTrigger>
           </TabsList>
