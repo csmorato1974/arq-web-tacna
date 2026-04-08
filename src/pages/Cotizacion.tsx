@@ -70,9 +70,9 @@ const externalCosts = [
 ];
 
 const priceRanges = [
-  { type: "Landing Page", range: "S/ 300 – S/ 800", desc: "Ideal para campañas específicas" },
-  { type: "Web Informativa/Corporativa", range: "S/ 500 – S/ 1,500", desc: "Sitio estándar con 5-7 secciones" },
-  { type: "Tienda Virtual (E-commerce)", range: "S/ 800 – S/ 3,000+", desc: "Pasarelas de pago y gestión de inventario" },
+  { type: "Landing Page", range: "S/ 800", desc: "Ideal para campañas específicas" },
+  { type: "Web Informativa/Corporativa", range: "S/ 1,500", desc: "Sitio estándar con 5-7 secciones" },
+  { type: "Tienda Virtual (E-commerce)", range: "S/ 3,000", desc: "Pasarelas de pago y gestión de inventario" },
 ];
 
 const factorsExtra = [
