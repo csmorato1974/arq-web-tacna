@@ -63,7 +63,7 @@ const plans = [
 
 const externalCosts = [
   { icon: Globe, label: "Dominio .pe", cost: "S/ 110 aprox./año", note: "Registro en Punto PE" },
-  { icon: Globe, label: "Dominio .com", cost: "S/ 60 aprox./año", note: "Alternativa internacional" },
+  
   { icon: Server, label: "Hosting Básico", cost: "Desde S/ 180/año", note: "HostGator, SiteGround" },
   { icon: ShieldCheck, label: "Certificado SSL", cost: "Incluido", note: "En todos los planes" },
 ];
