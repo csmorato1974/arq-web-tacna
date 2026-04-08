@@ -1,4 +1,5 @@
 import { ArrowRight, Phone } from "lucide-react";
+import logoRS from "@/assets/logo-rs.png";
 
 const HeroSection = () => {
   return (
@@ -14,6 +15,7 @@ const HeroSection = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center md:text-left">
         <div className="max-w-3xl">
+          <img src={logoRS} alt="R&S Constructora & Consultora" className="h-24 sm:h-32 w-auto mb-6 mx-auto md:mx-0 drop-shadow-lg" />
           <div className="inline-block bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
             Tacna, Perú
           </div>

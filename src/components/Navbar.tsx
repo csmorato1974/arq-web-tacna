@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logoRS from "@/assets/logo-rs.png";
 
 const navLinks = [
   { href: "#inicio", label: "Inicio" },
@@ -30,12 +31,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a href="#inicio" className="flex items-center gap-2">
-            <span className="text-primary font-extrabold text-xl md:text-2xl tracking-tight">
-              R&S
-            </span>
-            <span className="text-primary-foreground text-xs md:text-sm font-medium hidden sm:block">
-              Constructora & Consultora
-            </span>
+            <img src={logoRS} alt="R&S Constructora & Consultora" className="h-10 md:h-14 w-auto" />
           </a>
 
           <div className="hidden md:flex items-center gap-6">
