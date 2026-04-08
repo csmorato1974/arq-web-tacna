@@ -32,7 +32,7 @@ const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a
-              href="https://wa.me/51930382388"
+              href="https://wa.me/51994897857"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-primary text-secondary font-bold px-8 py-4 rounded-md text-lg hover:bg-primary/90 transition-colors"

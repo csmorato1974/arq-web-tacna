@@ -55,7 +55,7 @@ const Navbar = () => {
               Cotización Web
             </Link>
             <a
-              href="https://wa.me/51930382388"
+              href="https://wa.me/51994897857"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary text-secondary font-bold px-5 py-2 rounded-md text-sm hover:bg-primary/90 transition-colors"
@@ -94,7 +94,7 @@ const Navbar = () => {
               Cotización Web
             </Link>
             <a
-              href="https://wa.me/51930382388"
+              href="https://wa.me/51994897857"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary text-secondary font-bold px-5 py-2 rounded-md text-center hover:bg-primary/90 transition-colors"

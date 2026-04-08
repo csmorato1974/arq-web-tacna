@@ -9,7 +9,7 @@ const ContactSection = () => {
     const msg = encodeURIComponent(
       `Hola, soy ${form.nombre}. ${form.mensaje} (Email: ${form.email})`
     );
-    window.open(`https://wa.me/51930382388?text=${msg}`, "_blank");
+    window.open(`https://wa.me/51994897857?text=${msg}`, "_blank");
   };
 
   return (

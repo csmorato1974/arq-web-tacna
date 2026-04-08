@@ -286,7 +286,7 @@ const Cotizacion = () => {
                       <CardFooter>
                         <Button asChild className="w-full" variant={plan.highlight ? "default" : "outline"}>
                           <a
-                            href={`https://wa.me/51930382388?text=${encodeURIComponent(
+                            href={`https://wa.me/51994897857?text=${encodeURIComponent(
                               `Hola, me interesa el ${plan.name} para mi página web.`
                             )}`}
                             target="_blank"
@@ -386,7 +386,7 @@ const Cotizacion = () => {
                   </p>
                   <Button asChild size="lg">
                     <a
-                      href={`https://wa.me/51930382388?text=${encodeURIComponent(
+                      href={`https://wa.me/51994897857?text=${encodeURIComponent(
                         "Hola, completé el cuestionario de planificación web y me gustaría recibir una cotización personalizada."
                       )}`}
                       target="_blank"
