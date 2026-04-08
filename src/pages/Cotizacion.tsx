@@ -26,7 +26,7 @@ const plans = [
   {
     name: "Plan Corporativo",
     subtitle: "Recomendado para Empresas Medianas",
-    price: "S/ 1,500 – S/ 3,500",
+    price: "S/ 3,500",
     priceNote: "Pago único",
     maintenance: "S/ 450/año",
     maintenanceNote: "Hosting de alto rendimiento",
